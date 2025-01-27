@@ -4,7 +4,7 @@ const studentRoutes = require('./routes/StudentRoutes');
 const connectDB = require("./config/db");
 const authRoutes = require("./routes/authRoutes");
 const adminRoutes = require("./routes/adminRoutes");
-const path = require("path");
+// const path = require("path");
 require('dotenv').config();
 
 // Connect to MongoDB
@@ -24,7 +24,9 @@ app.use(bodyParser.urlencoded({
 app.use('/', studentRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/admin", adminRoutes);
-
+app.get("/",(req,res)=>{
+    res.json("Hello");
+})
 
 // // Middleware to verify the token and fetch user details
 // const authenticate = async (req, res, next) => {
