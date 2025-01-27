@@ -43,7 +43,7 @@ const handleSubmit = async (e) => {
     <div className="signup-page">
       <div class="signup-cover">
         <div className="signup-aside">
-          <AiFillMail style={{ color: "white", fontSize: "40px" }} />
+          <AiFillMail style={{ color: "white", fontSize: "90px" }} />
           <h2>Welcome To Emailcon...!</h2>
           <p>Create Your Template To Enhance Our Connection.</p>
         </div>

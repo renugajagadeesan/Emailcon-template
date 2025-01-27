@@ -28,7 +28,7 @@ function AdminLogin() {
     <div className="admin-login-page">
       <div className="admin-cover">
         <div className="admin-aside">
-          <AiFillMail style={{ color: "white", fontSize: "40px" }} />
+          <AiFillMail style={{ color: "white", fontSize: "90px" }} />
           <h2>Admin Access</h2>
           <p>View The Overall Access Content Here...</p>
         </div>

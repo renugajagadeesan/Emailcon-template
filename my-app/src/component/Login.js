@@ -86,7 +86,7 @@ function Login() {
           </div>
         </div>
         <div className="login-aside">
-          <AiFillMail style={{ color: "white", fontSize: "40px" }} />
+          <AiFillMail style={{ color: "white", fontSize: "90px" }} />
           <h2>Welcome Back...!</h2>
           <p>Here You go To Next Step, Your Login Here...!</p>
         </div>
