@@ -4,7 +4,7 @@ import './ParaEditor.css'
 
 const ParaEditor = ({ isOpen, content, style, onSave, onClose }) => {
 const [editorContent, setEditorContent] = useState(content);
-  const apiKey = 'oadtdlupdyt9cw9ad66j97sac0tyb2li4xvrxzjtywmrpmrx'; // Replace with your TinyMCE API key
+  const apiKey = 'hddpazfss5mb3ppinipav37ap1zt3pqs9oz3c897fidqfddq'; // Replace with your TinyMCE API key
 
 
   if (!isOpen) return null;
