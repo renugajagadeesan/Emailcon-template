@@ -6,6 +6,7 @@ import * as XLSX from "xlsx";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import sampleexcels from '../Images/excelsheet.png';
+import apiConfig from "../apiconfig/apiConfig.js";
 
 const GroupModal = ({ onClose }) => {
   const [groupName, setGroupName] = useState("");
@@ -26,7 +27,7 @@ useEffect(() => {
     }
 
     try {
-      const res = await axios.get(`http://localhost:5000/groups/${user.id}`);
+      const res = await axios.get(`${apiConfig.baseURL}/api/stud/groups/${user.id}`);
       setGroups(res.data);
     } catch (err) {
       console.error(err);
@@ -45,7 +46,7 @@ const handleGroupCreate = () => {
 
   if (groupName && user && user.id) {
     axios
-      .post("http://localhost:5000/groups", { name: groupName, userId: user.id })
+      .post(`${apiConfig.baseURL}/api/stud/groups`, { name: groupName, userId: user.id })
       .then((response) => {
         setGroups([...groups, response.data]);
         setSelectedGroupForUpload(response.data._id);
@@ -104,7 +105,7 @@ const handleFileUpload = (event) => {
       });
 
       console.log("uploaded data", payload);
-      axios.post("http://localhost:5000/students/upload", payload)
+      axios.post(`${apiConfig.baseURL}/api/stud/students/upload`, payload)
         .then(() => {
           toast.success("Uploaded data saved successfully");
           setUploadedData([]); // Clear data after saving
@@ -125,7 +126,7 @@ const handleFileUpload = (event) => {
 
   const handleManualStudentSave = () => {
     if (selectedGroupForManual) {
-      axios.post("http://localhost:5000/students/manual", {
+      axios.post(`${apiConfig.baseURL}/api/stud/students/manual`, {
         ...manualStudent,
         group: selectedGroupForManual,
       })

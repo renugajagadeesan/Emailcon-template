@@ -6,6 +6,7 @@ import { FaEnvelope, FaUser, FaLock } from "react-icons/fa";
 import { AiFillMail } from "react-icons/ai";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import apiConfig from "../apiconfig/apiConfig.js";
 
 function Signup() {
   const [email, setEmail] = useState("");
@@ -17,7 +18,7 @@ function Signup() {
 const handleSubmit = async (e) => {
   e.preventDefault();
   try {
-    const response = await axios.post("http://localhost:5000/api/auth/signup", {
+    const response = await axios.post(`${apiConfig.baseURL}/api/auth/signup`, {
       email,
       username,
       password,

@@ -21,7 +21,7 @@ app.use(bodyParser.urlencoded({
 
 
 // Routes
-app.use('/', studentRoutes);
+app.use('/api/stud', studentRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/admin", adminRoutes);
 app.get("/",(req,res)=>{

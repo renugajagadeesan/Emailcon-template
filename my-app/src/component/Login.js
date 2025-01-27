@@ -6,6 +6,7 @@ import { AiFillMail } from "react-icons/ai";
 import { FaEnvelope,FaLock } from "react-icons/fa";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import apiConfig from "../apiconfig/apiConfig.js";
 
 
 function Login() {
@@ -17,7 +18,7 @@ function Login() {
     e.preventDefault();
     try {
       const res = await axios.post(
-        "http://localhost:5000/api/auth/login",
+        `${apiConfig.baseURL}/api/auth/login`,
         {
           email,
           password,

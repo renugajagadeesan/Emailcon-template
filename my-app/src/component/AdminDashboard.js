@@ -5,6 +5,7 @@ import { FaSignOutAlt } from 'react-icons/fa';
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import apiconfig from '../apiconfig/apiConfig.js'
 
 
 function AdminDashboard() {
@@ -14,7 +15,7 @@ function AdminDashboard() {
 
   useEffect(() => {
     const fetchUsers = async () => {
-      const response = await axios.get("http://localhost:5000/api/admin/users");
+      const response = await axios.get(`${apiconfig.baseURL}/api/admin/users`);
       setUsers(response.data);
     };
     fetchUsers();
@@ -31,7 +32,7 @@ function AdminDashboard() {
     setLoadingUserId(id); // Set the ID of the user being updated
 
     try {
-      await axios.post("http://localhost:5000/api/admin/update-status", {
+      await axios.post(`${apiconfig.baseURL}/api/admin/update-status`, {
         id,
         status,
       });
