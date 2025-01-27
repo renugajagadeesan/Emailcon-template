@@ -1118,11 +1118,11 @@ const sendEmail = async () => {
         ✕
       </button>
       <div className="text-center">
-        <img
+        {/* <img
           src="https://via.placeholder.com/100" // Replace with your image URL
           alt="Welcome"
           className="mx-auto w-20 h-20 rounded-full mb-4"
-        />
+        /> */}
         <h2 className="text-2xl font-bold text-gray-800 mb-2">
           Welcome to Emailcon {user.username}!
         </h2>
