@@ -15,7 +15,7 @@ function AdminLogin() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (email === "admin@gmail.com" && password === "admin123") {
+    if (email === "admin@emailcon.com" && password === "admin123") {
       // Set token in localStorage
       localStorage.setItem("adminToken", "secret_key");
       navigate("/admin-dashboard");
