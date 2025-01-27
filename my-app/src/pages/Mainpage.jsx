@@ -303,7 +303,7 @@ const sendEmail = async () => {
 
   try {
     // Make POST request to backend
-    const response = await axios.post(`${apiConfig.baseURL}/sendtestmail`, {
+    const response = await axios.post(`${apiConfig.baseURL}/api/stud/sendtestmail`, {
       emailData,
       previewContent,
       bgColor,
