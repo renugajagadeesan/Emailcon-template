@@ -5,6 +5,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./Importexcel.css";
 import sampleexcel from "../Images/excelsheet.png";
+import apiConfig from "../apiconfig/apiConfig";
 
 const ExcelModal = ({ isOpen, onClose, previewContent = [],bgcolor}) => {
   const [excelData, setExcelData] = useState([]);
@@ -112,7 +113,7 @@ const handleSend = async () => {
       };
 
       console.log("Sending email data:", emailData); // Debugging info
-      await axios.post("http://localhost:5000/sendexcelEmail", emailData);
+      await axios.post(`${apiConfig.baseURL}/api/stud/sendexcelEmail`, emailData);
     }
 
     toast.success("Emails sent successfully!");

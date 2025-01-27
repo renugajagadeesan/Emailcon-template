@@ -3,6 +3,7 @@ import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./SendbulkModal.css";
+import apiConfig from "../apiconfig/apiConfig";
 
 const SendbulkModal = ({ isOpen, onClose, previewContent = [],bgcolor}) => {
   const [groups, setGroups] = useState([]);
@@ -24,7 +25,7 @@ const SendbulkModal = ({ isOpen, onClose, previewContent = [],bgcolor}) => {
   useEffect(() => {
     if (isOpen) {
       axios
-        .get(`http://localhost:5000/groups/${user.id}`)
+        .get(`${apiConfig.baseURL}/api/stud/groups/${user.id}`)
         .then((response) => setGroups(response.data))
         .catch((error) => {
           console.error("Error fetching groups:", error);
@@ -48,7 +49,7 @@ const SendbulkModal = ({ isOpen, onClose, previewContent = [],bgcolor}) => {
 
   try {
     const studentsResponse = await axios.get(
-      `http://localhost:5000/groups/${selectedGroup}/students`
+      `${apiConfig.baseURL}/api/stud/groups/${selectedGroup}/students`
     );
     const students = studentsResponse.data;
 
@@ -82,7 +83,7 @@ const SendbulkModal = ({ isOpen, onClose, previewContent = [],bgcolor}) => {
       };
 
       console.log("Sending email data:", emailData); // Debugging info
-      await axios.post("http://localhost:5000/sendbulkEmail", emailData);
+      await axios.post(`${apiConfig.baseURL}/api/stud/sendbulkEmail`, emailData);
     }
 
     toast.success("Emails sent successfully!");

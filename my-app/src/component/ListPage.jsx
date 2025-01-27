@@ -4,6 +4,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./ListPage.css";
 import { FiEdit, FiTrash2, FiRefreshCw } from 'react-icons/fi'; // Importing icons
+import apiConfig from "../apiconfig/apiConfig";
 
 
 
@@ -70,11 +71,11 @@ const ListPage = ({ onClose }) => {
 
 useEffect(() => {
  const fetchGroupsAndStudents = () => {
-  axios.get(`http://localhost:5000/groups/${user.id}`)
+  axios.get(`${apiConfig.baseURL}/api/stud/groups/${user.id}`)
     .then((response) => setGroups(response.data))
     .catch((err) => console.log(err));
 
-  axios.get("http://localhost:5000/students")
+  axios.get(`${apiConfig.baseURL}/api/stud/students`)
     .then((response) => {
       setStudents(response.data);
     })
@@ -85,11 +86,11 @@ fetchGroupsAndStudents();
 
 
   const handleRefresh = () => {
-  axios.get(`http://localhost:5000/groups/${user.id}`)
+  axios.get(`${apiConfig.baseURL}/api/stud/groups/${user.id}`)
     .then((response) => setGroups(response.data))
     .catch((err) => console.log(err));
 
-  axios.get("http://localhost:5000/students")
+  axios.get(`${apiConfig.baseURL}/api/stud/students`)
     .then((response) => {
       setStudents(response.data);
     })
@@ -105,7 +106,7 @@ fetchGroupsAndStudents();
   const confirmDeleteGroup = () => {
     if (groupToDelete) {
       axios
-        .delete(`http://localhost:5000/groups/${groupToDelete}`)
+        .delete(`${apiConfig.baseURL}/api/stud/groups/${groupToDelete}`)
         .then(() => {
           setGroups(groups.filter((group) => group._id !== groupToDelete));
           toast.success("Group and its students deleted");
@@ -129,7 +130,7 @@ fetchGroupsAndStudents();
   
   setShowDeletingToast(true); // Show toast
   axios
-    .delete("http://localhost:5000/students", {
+    .delete(`${apiConfig.baseURL}/api/stud/students`, {
       data: { studentIds: selectedStudents },
     })
     .then(() => {
@@ -159,7 +160,7 @@ fetchGroupsAndStudents();
   const handleSaveGroupName = () => {
     if (groupName.trim()) {
       axios
-        .put(`http://localhost:5000/groups/${editingGroup._id}`, {
+        .put(`${apiConfig.baseURL}/api/stud/groups/${editingGroup._id}`, {
           name: groupName,
         })
         .then(() => {
@@ -202,7 +203,7 @@ const handleEditStudent = (student) => {
 const handleSaveStudent = () => {
   if (editFormData.Fname.trim() && editFormData.Lname.trim() && editFormData.Email.trim() && editFormData.Coursename.trim() && editFormData.Coursetype.trim() && editFormData.Date.trim() && editFormData.group) {
      setShowEditingToast(true); // Show toast
-    axios.put(`http://localhost:5000/students/${editingStudent._id}`, {
+    axios.put(`${apiConfig.baseURL}/api/stud/students/${editingStudent._id}`, {
         Fname: editFormData.Fname,
         Lname: editFormData.Lname,
         Email: editFormData.Email,
