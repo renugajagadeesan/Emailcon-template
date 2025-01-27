@@ -1095,7 +1095,7 @@ const sendEmail = async () => {
           />
         )}
 
-        {/* welcome popup
+        {/* welcome popup */}
          {showPopup && (
         <div className="home-overlay overlay">
           <div className="home-modal">
@@ -1106,34 +1106,7 @@ const sendEmail = async () => {
             <p>Explore the features and manage your groups efficiently.</p>
           </div>
         </div>
-      )} */}
-      {/* welcome popup */}
-{showPopup && (
-  <div className="home-overlay overlay bg-gray-800 bg-opacity-50 fixed inset-0 flex items-center justify-center z-50">
-    <div className="home-modal bg-white rounded-2xl shadow-lg p-6 w-11/12 max-w-lg relative">
-      <button
-        className="home-close-button absolute top-4 right-4 text-gray-500 hover:text-gray-700 text-xl font-bold"
-        onClick={closePopup}
-      >
-        ✕
-      </button>
-      <div className="text-center">
-        {/* <img
-          src="https://via.placeholder.com/100" // Replace with your image URL
-          alt="Welcome"
-          className="mx-auto w-20 h-20 rounded-full mb-4"
-        /> */}
-        <h2 className="text-2xl font-bold text-gray-800 mb-2">
-          Welcome to Emailcon {user.username}!
-        </h2>
-        <p className="text-gray-600">
-          Explore the features and manage your groups efficiently.
-        </p>
-      </div>
-    </div>
-  </div>
-)}
-
+      )}
 
         {/* Modal */}
         {modalOpen && (
