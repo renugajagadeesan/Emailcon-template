@@ -20,15 +20,6 @@ app.use(bodyParser.urlencoded({
 }));
 
 
-// Serve static files from the React app
-app.use(express.static(path.join(__dirname, "client/build")));
-
-
-// Catch-all handler to serve React index.html
-app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "client/build", "index.html"));
-});
-
 // Routes
 app.use('/', studentRoutes);
 app.use("/api/auth", authRoutes);
